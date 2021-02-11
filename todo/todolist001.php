@@ -13,7 +13,8 @@ $year = date("Y");
   <title>TODOリスト</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="watercolor">
+<div>
   <h1>MY TODO LIST <?php echo $year; ?></h1>
   <section class="add_area">
   <h2>add new TODO</h2>
@@ -41,5 +42,6 @@ $year = date("Y");
   <?php endforeach; ?>
   </ul>
   </section>
+</div>
 </body>
 </html>

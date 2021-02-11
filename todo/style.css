@@ -1,6 +1,17 @@
 body{
   padding:20px;
 }
+.watercolor {
+  width: 100vw;
+  height:auto;
+  background: url('img_watercolor.jpg'),
+    linear-gradient(349deg, #ffe300, #ff7e00, #f04100, #d100ff, #3300ff);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  background-origin: padding-box;
+  background-blend-mode: hard-light;
+}
 section {
   margin-top:30px;
 }
@@ -24,4 +35,23 @@ li {
 }
 .btn_ok {
   margin-left:20px;
+}
+.add_area input[type="text"] {
+  padding: 5px;
+  border-radius:4px;
+  border:solid 1px #811651;
+  background-color: #f3f3f3;
+}
+.add_area input[type="submit"] {
+  border:solid 1px #811651;
+  padding: 3px 10px;
+  box-sizing: border-box;
+  /* font-weight: bold; */
+  font-size:16px;
+}
+.list_area input[type="submit"] {
+  background-color: #db678a;
+  border:solid 1px #910927;
+  border-radius: 4px;
+  padding: 2px 8px;
 }
