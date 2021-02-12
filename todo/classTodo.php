@@ -1,6 +1,10 @@
 <?php
 require_once("todoDatabase.php");
 
+if(empty($_POST["contents"])&& empty($_POST["allclear"])) {
+  header("Location: todolist001.php?=todoempty");
+}
+
 if(!empty($_POST["contents"])) {
   $sql = "INSERT INTO todos(contents) VALUES(:contents);";
   $stmt = $pdo->prepare($sql);
@@ -14,5 +18,11 @@ if(!empty($_POST["id"])) {
   $stmt= $pdo->prepare($sql);
   $stmt->bindValue(":id",$_POST["id"],PDO::PARAM_INT);
   $stmt->execute();
+  header("Location: todolist001.php");
+}
+
+if(!empty($_POST["allclear"])) {
+  $sql = "DELETE FROM todos";
+  $stmt =$pdo->query($sql);
   header("Location: todolist001.php");
 }

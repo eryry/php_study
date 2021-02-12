@@ -41,6 +41,9 @@ $year = date("Y");
   </li>
   <?php endforeach; ?>
   </ul>
+  <form action="classTodo.php" method="post">
+    <input type="submit" value="all CLEAR" name="allclear">
+  </form>
   </section>
 </div>
 </body>
