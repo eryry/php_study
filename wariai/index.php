@@ -1,22 +1,32 @@
 <?php
 // require_once("calc.php");
+$all_time_hour = 0;
+$all_time_min  = 0;
+$all_time = 0;
+$hoi_all_time_hour = 0;
+$hoi_all_time_min  = 0;
+$kon_all_time_hour = 0;
+$kon_all_time_min  = 0;
+$else_all_time_hour = 0;
+$else_time_min  = 0;
+
 if(!empty($_POST["submit"])) { 
   // 勤務時間合計を、計算用に分に変換して変数格納
-  $all_time_hour = intval($_POST["all_time_hour"]);
+  $all_time_hour = calc_hour(intval($_POST["all_time_hour"]));
   $all_time_min  = intval($_POST["all_time_min"]);
-  $all_time = $all_time_hour * 60 + $all_time_min;
+  $all_time = $all_time_hour + $all_time_min;
   
   // 保育事業関連業務時間合計を、計算用に分に変換して変数格納
-  $hoi_all_time_hour = intval($_POST["hoi_all_time_hour"]);
+  $hoi_all_time_hour = calc_hour(intval($_POST["hoi_all_time_hour"]));
   $hoi_all_time_min  = intval($_POST["hoi_all_time_min"]);
-  $hoi_all_time = $hoi_all_time_hour * 60 + $hoi_all_time_min;
+  $hoi_all_time = $hoi_all_time_hour + $hoi_all_time_min;
   // 割合算出
-  $hoi_wariai = ($hoi_all_time / $all_time)*100;
+  $hoi_wariai = calc_per($hoi_all_time);
   
   // 婚活事業関連業務時間合計を、計算用に分に変換して変数格納
-  $kon_all_time_hour = intval($_POST["kon_all_time_hour"]);
+  $kon_all_time_hour = calc_hour(intval($_POST["kon_all_time_hour"]));
   $kon_all_time_min  = intval($_POST["kon_all_time_min"]);
-  $kon_all_time = $kon_all_time_hour * 60 + $kon_all_time_min;
+  $kon_all_time = $kon_all_time_hour + $kon_all_time_min;
   // 割合算出
   $kon_wariai = ($kon_all_time / $all_time)*100;
   
@@ -36,12 +46,16 @@ if(!empty($_POST["submit"])) {
   $kon_all_time_min  = 0;
   $else_all_time_hour = 0;
   $else_time_min  = 0;
-  
+}
+function calc_hour($hour) {
+  return $hour*60;
+}
+function calc_per($time) {
+  if($all_time != 0){
+    return ($time / $all_time) *100;
+  }
 }
 
-function h($text) {
-  return htmlspecialchars($text,ENT_QUOTES);
-}
 $today = date("Y年m月d日");
 $weeks = ["日","月","火","水","木","金","土"];
 $week = $weeks[date("w")];
@@ -55,9 +69,9 @@ $week = $weeks[date("w")];
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="watercolor">
-<div>
+  <h1>割合計算<?php echo $today."(".$week.")"; ?></h1>
+<div class="sections">
   <section class="add_area">
-    <h1>割合計算<?php echo $today."(".$week.")"; ?></h1>
     <h2>本日の勤務時間数</h2>
     <form action="" method="post">
       <div>
@@ -80,7 +94,7 @@ $week = $weeks[date("w")];
         <input type="number" name="else_all_time_min" value="00">分
       </div>
       
-      <input type="submit" name="submit" value="計算する">
+      <input type="submit" name="submit" value="計算する" class="btn">
     </form>  
   </section>
   

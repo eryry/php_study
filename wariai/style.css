@@ -2,6 +2,11 @@ body{
   padding:20px;
 
 }
+.sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 section {
   margin-top:30px;
 }
@@ -20,9 +25,8 @@ li {
   flex-direction:row;
   line-height:30px;
 }
-
-.btn_ok {
-  margin-left:20px;
+.btn {
+  margin-top: 30px;
 }
 
 input[type="number"] {
@@ -39,5 +43,6 @@ input[type="submit"] {
   background-color: #db678a;
   border:solid 1px #910927;
   border-radius: 4px;
-  padding: 2px 8px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
