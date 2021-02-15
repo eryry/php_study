@@ -13,6 +13,11 @@ if(empty($_POST)){
   $hoi_wariai=0;
   $kon_wariai=0;
   $else_wariai=0;
+  $hoi_dane01=0;
+  $hoi_dane02=0;
+  $hoi_dane03=0;
+  $hoi_dane04=0;
+  $hoi_dane05=0;
 }
 
 if(!empty($_POST["submit"])) { 
@@ -27,6 +32,42 @@ if(!empty($_POST["submit"])) {
   $hoi_all_time = $hoi_all_time_hour + $hoi_all_time_min;
   // 割合算出
   $hoi_wariai = ($hoi_all_time / $all_time) *100;
+  // 保育事業内訳項目と割合
+  if(!empty($_POST["hoi_d0ne01"])){
+    $hoi_done01 = $_POST["hoi_done01"];
+    $hoi_done01_hour = calc_hour(intval($_POST["hoi_done01_hour"]));
+    $hoi_done01_min  = intval($_POST["hoi_done01_min"]);
+    $hoi_done01_alltime = $hoi_done01_hour + $hoi_done01_min;
+    $hoi_done01_wariai = ($hoi_done01_alltime / $hoi_all_time) *100;
+  }
+  if(!empty($_POST["hoi_done02"])){
+    $hoi_done02 = $_POST["hoi_done02"];
+    $hoi_done02_hour = calc_hour(intval($_POST["hoi_done02_hour"]));
+    $hoi_done02_min  = intval($_POST["hoi_done02_min"]);
+    $hoi_done02_alltime = $hoi_done02_hour + $hoi_done02_min;
+    $hoi_done02_wariai = ($hoi_done02_alltime / $hoi_all_time) *100;
+  }
+  if(!empty($_POST["hoi_done03"])){
+    $hoi_done03 = $_POST["hoi_done03"];
+    $hoi_done03_hour = calc_hour(intval($_POST["hoi_done03_hour"]));
+    $hoi_done03_min  = intval($_POST["hoi_done03_min"]);
+    $hoi_done03_alltime = $hoi_done03_hour + $hoi_done03_min;
+    $hoi_done03_wariai = ($hoi_done03_alltime / $hoi_all_time) *100;
+  }
+  if(!empty($_POST["hoi_done04"])){
+    $hoi_done04 = $_POST["hoi_done04"];
+    $hoi_done04_hour = calc_hour(intval($_POST["hoi_done04_hour"]));
+    $hoi_done04_min  = intval($_POST["hoi_done04_min"]);
+    $hoi_done04_alltime = $hoi_done04_hour + $hoi_done04_min;
+    $hoi_done04_wariai = ($hoi_done04_alltime / $hoi_all_time) *100;
+  }
+  if(!empty($_POST["hoi_done05"])){
+    $hoi_done05 = $_POST["hoi_done05"];
+    $hoi_done05_hour = calc_hour(intval($_POST["hoi_done05_hour"]));
+    $hoi_done05_min  = intval($_POST["hoi_done05_min"]);
+    $hoi_done05_alltime = $hoi_done05_hour + $hoi_done05_min;
+    $hoi_done05_wariai = ($hoi_done05_alltime / $hoi_all_time) *100;
+  }
   
   // 婚活事業関連業務時間合計を、計算用に分に変換して変数格納
   $kon_all_time_hour = calc_hour(intval($_POST["kon_all_time_hour"]));
@@ -41,6 +82,7 @@ if(!empty($_POST["submit"])) {
   $else_all_time = $else_all_time_hour * 60 + $else_all_time_min;
   // 割合算出
   $else_wariai = ($else_all_time / $all_time)*100;
+
   
 } else{
   $all_time_hour = 0;
@@ -51,6 +93,7 @@ if(!empty($_POST["submit"])) {
   $kon_all_time_min  = 0;
   $else_all_time_hour = 0;
   $else_time_min  = 0;
+  $hoi_dane01_hour=0;
 }
 function calc_hour($hour) {
   return $hour*60;
@@ -92,9 +135,29 @@ $week = $weeks[date("w")];
         </div>
         <ul>
           <li>
-            <input type="text" name="" value="" placeholder="詳細項目入力欄">
-            <input type="number" name="" value="">時間
-            <input type="number" name="" value="">分
+            <input type="text" name="hoi_done01" value="" placeholder="詳細項目入力欄">
+            <input type="number" name="hoi_dane01_hour" value="0">時間
+            <input type="number" name="hoi_dane01_min" value="00">分
+          </li>
+          <li>
+            <input type="text" name="hoi_done02" value="" placeholder="詳細項目入力欄">
+            <input type="number" name="hoi_done02_hour" value="0">時間
+            <input type="number" name="hoi_done02_min" value="00">分
+          </li>
+          <li>
+            <input type="text" name="hoi_done03" value="" placeholder="詳細項目入力欄">
+            <input type="number" name="hoi_done03_hour" value="0">時間
+            <input type="number" name="hoi_done03_min" value="00">分
+          </li>
+          <li>
+            <input type="text" name="hoi_done04" value="" placeholder="詳細項目入力欄">
+            <input type="number" name="hoi_done04_hour" value="0">時間
+            <input type="number" name="hoi_done04_min" value="00">分
+          </li>
+          <li>
+            <input type="text" name="hoi_done05" value="" placeholder="詳細項目入力欄">
+            <input type="number" name="hoi_done05_hour" value="0">時間
+            <input type="number" name="hoi_done05_min" value="00">分
           </li>
           
         </ul>
@@ -122,6 +185,15 @@ $week = $weeks[date("w")];
 
       <li>
        <p>保育事業関連：<?php echo $hoi_wariai;?>%</p>
+       <ul>
+         <?php if(!empty($hoi_done01)): ?>
+          <li><?php echo $hoi_done01; ?></li>
+          <li><?php echo $hoi_done02; ?></li>
+          <li><?php echo $hoi_done03; ?></li>
+          <li><?php echo $hoi_done04; ?></li>
+          <li><?php echo $hoi_done05; ?></li>
+         <?php endif; ?>
+       </ul>
       </li>
       <li>
        <p>婚活事業関連：<?php echo $kon_wariai;?>%</p>
