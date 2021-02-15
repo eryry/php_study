@@ -7,6 +7,16 @@ body{
   flex-direction: row;
   justify-content: space-around;
 }
+.hoi {
+  display: flex;
+  flex-direction: column;
+}
+.hoi li {
+  margin-top: 6px;
+}
+input[type="text"] {
+  margin-right: 8px;
+}
 section {
   margin-top:30px;
 }
@@ -25,12 +35,15 @@ li {
   flex-direction:row;
   line-height:30px;
 }
+form p {
+  margin-bottom:4px;
+}
 .btn {
   margin-top: 30px;
 }
 
 input[type="number"] {
-  border:solid 1px #811651;
+  border:solid 1px #3269bb;
   padding-left: 2px;
   box-sizing: border-box;
   /* font-weight: bold; */
@@ -40,9 +53,9 @@ input[type="number"] {
   text-align: right;
 }
 input[type="submit"] {
-  background-color: #db678a;
-  border:solid 1px #910927;
-  border-radius: 4px;
+  background-color: #3269bb;
+  border:solid 1px #3269bb;
+  border-radius: 50px;
   padding: 10px 20px;
   cursor: pointer;
 }

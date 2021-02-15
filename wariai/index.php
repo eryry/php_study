@@ -1,27 +1,32 @@
 <?php
 // require_once("calc.php");
-$all_time_hour = 0;
-$all_time_min  = 0;
-$all_time = 0;
-$hoi_all_time_hour = 0;
-$hoi_all_time_min  = 0;
-$kon_all_time_hour = 0;
-$kon_all_time_min  = 0;
-$else_all_time_hour = 0;
-$else_time_min  = 0;
+if(empty($_POST)){
+  $all_time_hour = 0;
+  $all_time_min  = 0;
+  $all_time = 0;
+  $hoi_all_time_hour = 0;
+  $hoi_all_time_min  = 0;
+  $kon_all_time_hour = 0;
+  $kon_all_time_min  = 0;
+  $else_all_time_hour = 0;
+  $else_time_min  = 0;
+  $hoi_wariai=0;
+  $kon_wariai=0;
+  $else_wariai=0;
+}
 
 if(!empty($_POST["submit"])) { 
   // 勤務時間合計を、計算用に分に変換して変数格納
   $all_time_hour = calc_hour(intval($_POST["all_time_hour"]));
   $all_time_min  = intval($_POST["all_time_min"]);
-  $all_time = $all_time_hour + $all_time_min;
+  $all_time = $all_time_hour+ $all_time_min;
   
   // 保育事業関連業務時間合計を、計算用に分に変換して変数格納
   $hoi_all_time_hour = calc_hour(intval($_POST["hoi_all_time_hour"]));
   $hoi_all_time_min  = intval($_POST["hoi_all_time_min"]);
   $hoi_all_time = $hoi_all_time_hour + $hoi_all_time_min;
   // 割合算出
-  $hoi_wariai = calc_per($hoi_all_time);
+  $hoi_wariai = ($hoi_all_time / $all_time) *100;
   
   // 婚活事業関連業務時間合計を、計算用に分に変換して変数格納
   $kon_all_time_hour = calc_hour(intval($_POST["kon_all_time_hour"]));
@@ -71,36 +76,48 @@ $week = $weeks[date("w")];
 <body class="watercolor">
   <h1>割合計算<?php echo $today."(".$week.")"; ?></h1>
 <div class="sections">
-  <section class="add_area">
+  <section class="base">
     <h2>本日の勤務時間数</h2>
+    <ul>
     <form action="" method="post">
-      <div>
+      <li>
         <input type="number" name="all_time_hour" value="8">時間
         <input type="number" name="all_time_min" value="00">分
-      </div>
+      </li>
       <p>保育事業関連</p>
-      <div>
-        <input type="number" name="hoi_all_time_hour" value="00">時間
-        <input type="number" name="hoi_all_time_min" value="00">分
-      </div>
+      <li class="hoi">
+        <div>
+          <input type="number" name="hoi_all_time_hour" value="00">時間
+          <input type="number" name="hoi_all_time_min" value="00">分
+        </div>
+        <ul>
+          <li>
+            <input type="text" name="" value="" placeholder="詳細項目入力欄">
+            <input type="number" name="" value="">時間
+            <input type="number" name="" value="">分
+          </li>
+          
+        </ul>
+      </li>
       <p>婚活事業関連</p>
-      <div>
+      <li>
         <input type="number" name="kon_all_time_hour" value="00">時間
         <input type="number" name="kon_all_time_min" value="00">分
-      </div>
+      </li>
       <p>その他</p>
-      <div>
+      <li>
         <input type="number" name="else_all_time_hour" value="00">時間
         <input type="number" name="else_all_time_min" value="00">分
-      </div>
+      </li>
       
       <input type="submit" name="submit" value="計算する" class="btn">
     </form>  
+  </ul>
   </section>
   
-  <section class="list_area">
+  <section class="result">
     <h2>今日の業務割合</h2>
-    <p>今日の勤務時間（分）合計：<?php echo $all_time; ?>分</p>
+    <p>今日の勤務時間 合計：<?php echo $all_time; ?>分</p>
     <ul>  
 
       <li>
