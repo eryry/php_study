@@ -149,7 +149,7 @@ $week = $weeks[date("w")];
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="watercolor">
-  <h1>割合計算<?php echo $today."(".$week.")"; ?></h1>
+  <h1><span class="emphasis">割合計算</span><?php echo $today."(".$week.")"; ?></h1>
 <div class="sections">
   <section class="base">
     <h2>本日の勤務時間数</h2>
@@ -217,7 +217,7 @@ $week = $weeks[date("w")];
 
       <li class="detail">
        <p>保育事業関連：<?php echo $hoi_wariai;?>%</p>
-       <ul>
+       <ul class="h_results">
          <?php if(!empty($hoi_done01) ||!empty($hoi_done01_hour) || !empty($hoi_dane01_min)): ?>
           <li>
             <?php echo $hoi_done01."→".$hoi_done01_wariai."%"; ?>
