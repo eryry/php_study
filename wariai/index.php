@@ -18,6 +18,17 @@ if(empty($_POST)){
   $hoi_dane03=0;
   $hoi_dane04=0;
   $hoi_dane05=0;
+  $hoi_done01_hour=0;
+  $hoi_done02_hour=0;
+  $hoi_done03_hour=0;
+  $hoi_done04_hour=0;
+  $hoi_done05_hour=0;
+  $hoi_done01_min=0;
+  $hoi_done02_min=0;
+  $hoi_done03_min=0;
+  $hoi_done04_min=0;
+  $hoi_done05_min=0;
+  $hoi_done02_alltime=0;
 }
 
 if(!empty($_POST["submit"])) { 
@@ -32,8 +43,9 @@ if(!empty($_POST["submit"])) {
   $hoi_all_time = $hoi_all_time_hour + $hoi_all_time_min;
   // 割合算出
   $hoi_wariai = ($hoi_all_time / $all_time) *100;
+  
   // 保育事業内訳項目と割合
-  if(!empty($_POST["hoi_d0ne01"])){
+  if(!empty($_POST["hoi_done01"])){
     $hoi_done01 = $_POST["hoi_done01"];
     $hoi_done01_hour = calc_hour(intval($_POST["hoi_done01_hour"]));
     $hoi_done01_min  = intval($_POST["hoi_done01_min"]);
@@ -136,8 +148,8 @@ $week = $weeks[date("w")];
         <ul>
           <li>
             <input type="text" name="hoi_done01" value="" placeholder="詳細項目入力欄">
-            <input type="number" name="hoi_dane01_hour" value="0">時間
-            <input type="number" name="hoi_dane01_min" value="00">分
+            <input type="number" name="hoi_done01_hour" value="0">時間
+            <input type="number" name="hoi_done01_min" value="00">分
           </li>
           <li>
             <input type="text" name="hoi_done02" value="" placeholder="詳細項目入力欄">
@@ -186,12 +198,30 @@ $week = $weeks[date("w")];
       <li>
        <p>保育事業関連：<?php echo $hoi_wariai;?>%</p>
        <ul>
-         <?php if(!empty($hoi_done01)): ?>
-          <li><?php echo $hoi_done01; ?></li>
-          <li><?php echo $hoi_done02; ?></li>
-          <li><?php echo $hoi_done03; ?></li>
-          <li><?php echo $hoi_done04; ?></li>
-          <li><?php echo $hoi_done05; ?></li>
+         <?php if(!empty($hoi_done01) ||!empty($hoi_done01_hour) || !empty($hoi_dane01_min)): ?>
+          <li>
+            <?php echo $hoi_done01."→".$hoi_done01_wariai."%"; ?>
+          </li>
+         <?php endif; ?>
+         <?php if(!empty($hoi_done02) ||!empty($hoi_done02_hour) || !empty($hoi_dane02_min)): ?>
+          <li>
+            <?php echo $hoi_done02."→".$hoi_done02_wariai."%"; ?>
+          </li>
+         <?php endif; ?>
+         <?php if(!empty($hoi_done03) ||!empty($hoi_done03_hour) || !empty($hoi_dane03_min)): ?>
+          <li>
+            <?php echo $hoi_done03."→".$hoi_done03_wariai."%"; ?>
+          </li>
+         <?php endif; ?>
+         <?php if(!empty($hoi_done04) ||!empty($hoi_done04_hour) || !empty($hoi_dane04_min)): ?>
+          <li>
+            <?php echo $hoi_done04."→".$hoi_done04_wariai."%"; ?>
+          </li>
+         <?php endif; ?>
+         <?php if(!empty($hoi_done05) ||!empty($hoi_done05_hour) || !empty($hoi_dane05_min)): ?>
+          <li>
+            <?php echo $hoi_done05."→".$hoi_done05_wariai."%"; ?>
+          </li>
          <?php endif; ?>
        </ul>
       </li>
