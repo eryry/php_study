@@ -17,6 +17,10 @@ body{
 input[type="text"] {
   margin-right: 8px;
 }
+.detail {
+  display: flex;
+  flex-direction: column;
+}
 section {
   margin-top:30px;
 }
