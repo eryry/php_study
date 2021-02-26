@@ -1,6 +1,7 @@
 <?php
 
 class Calc {
+  
   // 時間を分に変換
   function calc_hour($hour) {
     return $hour*60;

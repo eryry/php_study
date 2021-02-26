@@ -1,9 +1,11 @@
 <?php
-require_once("calc.php");
+require_once "calc.php";
 
 $today = date("Y年m月d日");
 $weeks = ["日","月","火","水","木","金","土"];
 $week = $weeks[date("w")];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,27 +34,27 @@ $week = $weeks[date("w")];
         </div>
         <ul>
           <li>
-            <input type="text" name="hoi_done01" value="1:" placeholder="詳細項目入力欄">
-            <input type="number" name="hoi_done01_hour" value="<?php echo $hoi_dane01_hour!=0 ? :0; ?>">時間
+            <input type="text" name="hoi_done01" value='<?php echo $_POST ? "$hoi_done01" : "1:";?>'>
+            <input type="number" name="hoi_done01_hour" value="0">時間
             <input type="number" name="hoi_done01_min" value="00">分
           </li>
           <li>
-            <input type="text" name="hoi_done02" value="2:" placeholder="詳細項目入力欄">
+            <input type="text" name="hoi_done02" value='<?php echo $_POST ? "$hoi_done02" : "2:";?>'>
             <input type="number" name="hoi_done02_hour" value="0">時間
             <input type="number" name="hoi_done02_min" value="00">分
           </li>
           <li>
-            <input type="text" name="hoi_done03" value="3:" placeholder="詳細項目入力欄">
+            <input type="text" name="hoi_done03" value='<?php echo $_POST ? "$hoi_done03" : "3:";?>'>
             <input type="number" name="hoi_done03_hour" value="0">時間
             <input type="number" name="hoi_done03_min" value="00">分
           </li>
           <li>
-            <input type="text" name="hoi_done04" value="4:" placeholder="詳細項目入力欄">
+            <input type="text" name="hoi_done04" value='<?php echo $_POST ? "$hoi_done04" : "4:";?>'>
             <input type="number" name="hoi_done04_hour" value="0">時間
             <input type="number" name="hoi_done04_min" value="00">分
           </li>
           <li>
-            <input type="text" name="hoi_done05" value="5:" placeholder="詳細項目入力欄">
+            <input type="text" name="hoi_done05" value='<?php echo $_POST ? "$hoi_done05" : "5:";?>'>
             <input type="number" name="hoi_done05_hour" value="0">時間
             <input type="number" name="hoi_done05_min" value="00">分
           </li>

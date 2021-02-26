@@ -1,5 +1,5 @@
 <?php
-require_once 'ClassCalc.php';
+require_once "ClassCalc.php";
 $cal = new Calc();
 
 if(empty($_POST)){
@@ -113,7 +113,7 @@ if(!empty($_POST["submit"])) {
   // その他業務時間合計を、計算用に分に変換して変数格納
   $else_all_time_hour = intval($_POST["else_all_time_hour"]);
   $else_all_time_min  = intval($_POST["else_all_time_min"]);
-  $else_all_time = $else_all_time_hour * 60 + $else_all_time_min;
+  $else_all_time = $cal->calc_hour($else_all_time_hour) + $else_all_time_min;
   // 割合算出
   $else_wariai = $cal->calc_per($else_all_time,$all_time);
 
