@@ -45,6 +45,7 @@ if(!empty($_POST["submit"])) {
   $hoi_all_time = $hoi_all_time_hour + $hoi_all_time_min;
   // 割合算出
   $hoi_wariai = $cal->calc_per($hoi_all_time,$all_time);
+  $hoi_wariai = $cal->number_for($hoi_wariai);
   
   // 保育事業内訳項目と割合
   if(!empty($_POST["hoi_done01"]) || !empty($_POST["hoi_done01_hour"])|| !empty($_POST["hoi_done01_min"])){
@@ -54,6 +55,7 @@ if(!empty($_POST["submit"])) {
     $hoi_done01_alltime = $hoi_done01_hour + $hoi_done01_min;
     if($hoi_all_time!=0) {
       $hoi_done01_wariai = $cal->calc_per($hoi_done01_alltime,$hoi_all_time);
+      $hoi_done01_wariai = $cal->number_for($hoi_done01_wariai);
     }else {
       $hoi_done01_wariai= "-";
     }
@@ -65,6 +67,7 @@ if(!empty($_POST["submit"])) {
     $hoi_done02_alltime = $hoi_done02_hour + $hoi_done02_min;
     if($hoi_all_time!=0) {
       $hoi_done02_wariai = $cal->calc_per($hoi_done02_alltime,$hoi_all_time);
+      $hoi_done02_wariai = $cal->number_for($hoi_done02_wariai);
     }else {
       $hoi_done02_wariai= "-";
     }
@@ -76,6 +79,7 @@ if(!empty($_POST["submit"])) {
     $hoi_done03_alltime = $hoi_done03_hour + $hoi_done03_min;
     if($hoi_all_time!=0) {
       $hoi_done03_wariai = $cal->calc_per($hoi_done03_alltime,$hoi_all_time);
+      $hoi_done03_wariai = $cal->number_for($hoi_done03_wariai);
     }else {
       $hoi_done03_wariai= "-";
     }
@@ -87,6 +91,7 @@ if(!empty($_POST["submit"])) {
     $hoi_done04_alltime = $hoi_done04_hour + $hoi_done04_min;
     if($hoi_all_time!=0) {
       $hoi_done04_wariai = $cal->calc_per($hoi_done04_alltime,$hoi_all_time);
+      $hoi_done04_wariai = $cal->number_for($hoi_done04_wariai);
     }else {
       $hoi_done04_wariai= "-";
     }
@@ -98,6 +103,7 @@ if(!empty($_POST["submit"])) {
     $hoi_done05_alltime = $hoi_done05_hour + $hoi_done05_min;
     if($hoi_all_time!=0) {
       $hoi_done05_wariai = $cal->calc_per($hoi_done05_alltime, $hoi_all_time);
+      $hoi_done05_wariai = $cal->number_for($hoi_done05_wariai);
     }else {
       $hoi_done05_wariai= "-";
     }
@@ -109,6 +115,7 @@ if(!empty($_POST["submit"])) {
   $kon_all_time = $kon_all_time_hour + $kon_all_time_min;
   // 割合算出
   $kon_wariai = $cal->calc_per($kon_all_time,$all_time);
+  $kon_wariai = $cal->number_for($kon_wariai);
   
   // その他業務時間合計を、計算用に分に変換して変数格納
   $else_all_time_hour = intval($_POST["else_all_time_hour"]);
@@ -116,6 +123,7 @@ if(!empty($_POST["submit"])) {
   $else_all_time = $cal->calc_hour($else_all_time_hour) + $else_all_time_min;
   // 割合算出
   $else_wariai = $cal->calc_per($else_all_time,$all_time);
+  $else_wariai = $cal->number_for($else_wariai);
 
   
 } else{

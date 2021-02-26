@@ -1,7 +1,7 @@
 <?php
 
 class Calc {
-  
+
   // 時間を分に変換
   function calc_hour($hour) {
     return $hour*60;
@@ -11,5 +11,10 @@ class Calc {
     if($all_time != 0){
       return ($time / $all_time) *100;
     }
+  }
+  
+  function number_for($num) {
+    $num = number_format($num,2);
+    return $num;
   }
 }
