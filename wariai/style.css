@@ -5,13 +5,14 @@ body{
 .sections {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 .base {
   padding-left: 18px;
   padding-right: 18px;
   border-radius: 10px;
   background-color: rgb(207, 227, 235);
+  margin-right: 30px;
 }
 .result {
   padding-left: 18px;
@@ -45,6 +46,10 @@ h1{
   font-size:26px;
   padding-right: 10px;
   text-decoration: wavy underline #c3a400;
+}
+.attention_red {
+  color: red;
+  font-weight: bold;
 }
 /* .emphasis::after {
   width: 100%;

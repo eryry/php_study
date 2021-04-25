@@ -80,6 +80,17 @@ $week = $weeks[date("w")];
   <section class="result">
     <h2>今日の業務割合</h2>
     <p>今日の勤務時間 合計：<?php echo $all_time; ?>分</p>
+    <p class="attention_red"><?php
+    if($all_time<=480){
+      echo "定時退社";
+    }elseif($all_time>480 && $all_time<=540){
+      echo "残業注意報！おつかれさまですね";
+    }elseif($all_time>540 && $all_time<=600) {
+      echo "1時間以上も残業してますよ!(><)!";
+    }elseif($all_time>600) {
+      echo "働きすぎだよ！気を付けて帰ってね";
+    }
+    ;?></p>
     <ul>  
 
       <li class="detail">

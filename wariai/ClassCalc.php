@@ -12,7 +12,7 @@ class Calc {
       return ($time / $all_time) *100;
     }
   }
-  
+  // 小数点以下2桁表示
   function number_for($num) {
     $num = number_format($num,2);
     return $num;
